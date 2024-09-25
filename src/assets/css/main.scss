@@ -1,0 +1,1410 @@
+//Kullanıcı sayfayı aşağı kaydırdığında, navbar'ın küçülüp yapışmasını sağlayabilirsiniz.
+header {
+  transition: background-color 0.5s, padding 0.5s;
+}
+header.scrolled {
+  background-color: rgba(244, 238, 238, 0.8);
+  // padding: 10px 0;
+}
+/////////
+header .logo {
+  font-size: 3rem;
+  color: #000000;
+  font-weight: bolder;
+  text-decoration: none;
+  display: flex;
+  margin-top: 10px;
+  font-family: "Playwrite CU", cursive;
+}
+///////////////////////////////////
+header #toggler {
+  display: none;
+}
+header .fa-bars {
+  font-size: 3rem;
+  color: #333;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  display: none;
+}
+/////////////////////////////////////////////
+body {
+  padding-top: 100px; /* Header için yeterli üst boşluk bırakın */
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header .logo span {
+  display: flex;
+}
+header .logo img {
+  width: 50px; /* İstediğiniz boyuta göre ayarlayabilirsiniz */
+  height: auto; /* Oranını korur */
+  margin-left: 17px;
+  margin-bottom: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: 0.2s linear;
+}
+$green: #bac34e;
+$black: #222;
+$light-color: #666;
+$light-bg: #f3f3f3;
+$border: 1rem solid rgba(0, 0, 0, 0.1);
+$box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+@mixin grid($val) {
+  display: grid;
+  grid-template-columns: repeat(outo-fit, minmax($val, 1fr));
+  gap: 1.5rem;
+}
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth; // esnetik kaydirma sekli
+  scroll-padding-top: 6rem;
+}
+
+////shop page   heading////
+
+.heading {
+  background: url(../images/breadcrumb.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding-top: 12rem;
+  padding-bottom: 8rem;
+
+  h1 {
+    color: $black;
+    font-size: 4rem;
+  }
+  p {
+    padding: 1rem;
+    font-size: 2rem;
+    color: $light-color;
+    padding-right: 0.5rem;
+    a {
+      color: $black;
+      &:hover {
+        color: #e72463;
+      }
+    }
+  }
+}
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+  padding: 1.2rem 44px;
+  border-bottom: $border;
+  color: $black;
+  font-family: "Playwrite CU", cursive;
+
+  span {
+    color: #e72463;
+    padding-left: 0.7rem;
+  }
+
+  a {
+    margin-left: auto;
+    color: $light-color;
+    font-size: 1.8rem;
+    padding: 1.2rem 49px;
+
+    &:hover {
+      color: #e72463;
+    }
+  }
+}
+////////////////////////////////////
+.btn {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 0.8rem 3rem;
+  background: black;
+  color: white;
+  font-size: 1.7rem;
+  cursor: pointer;
+
+  &:hover {
+    background: #e72463;
+  }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: $box-shadow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 9%;
+  background: white;
+
+  header .logo {
+    font-size: 3rem;
+    color: #333;
+    font-weight: bolder;
+    text-decoration: none;
+  }
+
+  header .logo span {
+    display: flex;
+  }
+  header .logo img {
+    width: 50px; /* İstediğiniz boyuta göre ayarlayabilirsiniz */
+    height: auto; /* Oranını korur */
+    margin-left: 167px;
+  }
+
+  .navbar {
+    display: flex;
+    border: #000000;
+    a {
+      font-size: 2.3rem;
+      color: #000000;
+      margin: 0 1rem;
+      text-decoration: none;
+
+      &:hover {
+        color: #e72463;
+      }
+    }
+  }
+  .icons div {
+    font-size: 2.5rem;
+    margin-left: 1.7rem;
+    color: #000000;
+    cursor: pointer;
+    &:hover {
+      color: #e72463;
+    }
+  }
+
+  .search-form {
+    position: absolute;
+    top: -115%;
+    right: 2rem;
+    width: 50rem;
+    border-radius: 0.5rem;
+    display: flex;
+    height: 5.5rem;
+    box-shadow: $box-shadow;
+    background: white;
+    &.active {
+      top: 115%;
+    }
+
+    input {
+      height: 100%;
+      width: 100%;
+      padding: 0 1.2rem;
+      font-size: 1.6rem;
+      color: $black;
+      text-transform: none;
+    }
+    label {
+      font-size: 2.5rem;
+      margin-right: 1.7rem;
+      cursor: pointer;
+      color: $light-color;
+      &:hover {
+        color: $green;
+      }
+    }
+  }
+  .shopping-cart {
+    position: absolute;
+    top: 115%;
+    right: -105%;
+    border-radius: 0.5rem;
+    box-shadow: $box-shadow;
+    width: 35rem;
+    padding: 2rem;
+    background: white;
+
+    &.active {
+      right: 2rem;
+      transition: 0.4s linear;
+    }
+
+    .box {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 20px;
+      position: relative;
+
+      .fa-times {
+        position: absolute;
+        top: 50%;
+        right: 2rem;
+        transform: translateY(-50%);
+        font-size: 2rem;
+        color: $light-color;
+        cursor: pointer;
+
+        &:hover {
+          color: $green;
+        }
+      }
+
+      img {
+        height: 10rem;
+        width: 104px;
+      }
+      .content {
+        h3 {
+          font-size: 2rem;
+          padding-bottom: 0.5rem;
+          color: $black;
+        }
+
+        span {
+          font-size: 1.8rem;
+          color: $light-color;
+
+          &.multiply {
+            margin: 0.5rem;
+          }
+        }
+      }
+    }
+    .total {
+      color: $light-color;
+      text-align: center;
+      font-size: 2.2rem;
+      span {
+        color: $black;
+      }
+    }
+    .btn {
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  //   login disgn
+  .login-form {
+    position: absolute;
+    top: 115%;
+    right: -105%;
+    border-radius: 0.5rem;
+    box-shadow: $box-shadow;
+    width: 35rem;
+    padding: 2rem;
+    background: white;
+
+    &.active {
+      right: 2rem; /// sag taraftan 2rem uzunlukta form  gelsin
+      transition: 0.4s linear; // 4s icinde hareket
+    }
+
+    h3 {
+      color: $black;
+      text-transform: uppercase;
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 0.7rem;
+    }
+    .box {
+      margin: 0.7rem 0;
+      border: $border;
+      padding: 1rem 1.2rem;
+      font-size: 1.5rem;
+      color: $black;
+      text-transform: none;
+      width: 100%;
+    }
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.7rem 0;
+
+      label {
+        font-size: 1.5rem;
+        color: $light-color;
+        cursor: pointer;
+      }
+    }
+    .btn {
+      margin: 1rem 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    p {
+      color: $light-color;
+      font-size: 1.4rem;
+      padding-top: 0.7rem;
+
+      a {
+        color: #e72463;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+#menu-btn {
+  display: none;
+  font-size: 3rem;
+  color: #333;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}
+
+////////////////// ana sayfadaki  bannerler
+.banner-container {
+  @include grid(32rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem; // Bannerler arasındaki boşluk
+  padding-top: 50px;
+  box-sizing: border-box;
+  padding-bottom: 30px;
+  padding-left: 50px;
+  position: relative;
+  right: 16px;
+
+  .banner {
+    position: relative;
+    height: 40rem;
+    flex: 1 1 30%; // bannerlerin esit genislikte olmasini saglar
+    overflow: hidden;
+    border-radius: 15px; // Köşeleri yuvarlatır
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Gölge efekti ekler
+
+    &:hover img {
+      transform: scale(1.2);
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      border-radius: 20px;
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      bottom: 1rem;
+      left: 1rem;
+      color: #fff;
+      padding: 1rem;
+      border-radius: 10px; // İçeriğin köşelerini yuvarlatır
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+
+      span {
+        color: $light-color;
+        font-size: 1.5rem;
+      }
+      h3 {
+        font-size: 5rem;
+        padding-top: 0.5rem;
+        color: #fffcfc;
+        padding-left: 80px;
+        padding-top: 100px;
+      }
+    }
+    ////// iceriklerin  yavasca gorunmesini saglamak icin
+    .content.visible {
+      opacity: 1;
+    }
+  }
+}
+//////////////////////////////////////
+
+.footer {
+  background: $light-bg;
+  padding-top: 90px; ///yeni
+  max-width: 2000px;
+  padding-left: 60px;
+
+  .box-container {
+    // @include grid(25rem);
+    // from chat gpt
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
+    gap: 5rem;
+
+    ////
+    .box {
+      h3 {
+        font-size: 2.2rem;
+        color: $black;
+        padding: 1rem 0;
+      }
+      p {
+        font-size: 1.5rem;
+        color: $light-color;
+        padding-bottom: 0.5rem;
+      }
+
+      a {
+        font-size: 1.4rem;
+        color: $light-color;
+        padding: 1rem 0;
+        display: block;
+        &:hover {
+          color: #e72463;
+
+          i {
+            padding-right: 2rem;
+          }
+        }
+        i {
+          padding-right: 0.5rem;
+          color: #e72463;
+        }
+      }
+      form input[type="email"] {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        font-size: 1.6rem;
+        color: $black;
+        margin: 1rem 0;
+        text-transform: none;
+      }
+    }
+  }
+}
+
+.credit {
+  font-size: 2rem;
+  padding: 2rem 53px 30px;
+  text-align: center;
+  background: #e72463;
+  color: #f3f3f3;
+}
+
+//// sayfayı  kucultmek ıstedıgımız zaman
+
+// @media (max-width: 1200px) {
+//   .header {
+//     padding: 12px 3%;
+//   }
+// }
+// @media (max-width: 920) {
+//   #menu-btn {
+//     display: blok;
+//     height: 30px;
+//     width: 30px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     z-index: 10001;
+//     border-radius: 50%;
+//   }
+//   .navbar {
+//     position: absolute;
+//     top: -800px;
+//     left: 0;
+//     right: 0;
+//     display: flex;
+//     text-align: left;
+
+//     a {
+//       display: block;
+//       padding: 5px;
+//       margin: 15px;
+//       font-size: 20px;
+
+//       &.active {
+//         top: 100%;
+//       }
+//     }
+//   }
+// }
+@media (max-width: 920px) {
+  html {
+    font-size: 55%;
+  }
+
+  .header {
+    padding: 2rem;
+
+    .logo img {
+      position: relative;
+      right: 60px;
+    }
+  }
+  section {
+    padding: 3rem 2rem;
+  }
+  .icons {
+    padding: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  #menu-btn {
+    display: block;
+    position: relative;
+    z-index: 1001;
+    border: none;
+    left: 90%;
+    top: 30px;
+    &.active {
+      background-color: #e72463;
+    }
+  }
+  .header {
+    padding: 2rem;
+    ///// yeni  codes ///
+    .fa-bars {
+      display: block;
+    }
+    .logo img {
+      position: relative;
+      right: 11px;
+    }
+    //////
+    .search-form {
+      width: 100%;
+      right: 0;
+      border-radius: 0;
+
+      &.active {
+        top: 99%;
+        border-top: $border;
+        border-bottom: $border;
+      }
+    }
+    .icons {
+      font-size: 1.2rem;
+    }
+
+    .navbar {
+      position: absolute;
+      top: 99%;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: $border;
+      border-bottom: $border;
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      z-index: 1000; /* Z-index ekleyin */
+
+      &.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+      }
+
+      a {
+        margin: 1.5rem;
+        padding: 1.5rem;
+        background: #eee;
+        font-size: 2rem;
+        display: block;
+        border-radius: 0.5rem;
+
+        img {
+          height: 40px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+
+  .home .slides-container.slide.content h3 {
+    font-size: 5rem;
+  }
+
+  .contact.row form .inputbox input {
+    width: 100%;
+  }
+
+  header {
+    padding: 2rem;
+  }
+}
+
+// #menu-btn {
+//   display: none;
+// }
+
+/////////////////////////////////////////////////////////
+
+.home {
+  padding-top: 80rem;
+  background: url(../images/slide2.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+//////////////////////////// slide kismi
+.carousel-caption {
+  position: absolute;
+  top: 60%;
+  left: 10%;
+  transform: translate(-31%, -81%);
+  text-align: center;
+  color: rgb(18, 17, 17);
+}
+////////// effect ekledim  icin bu kisimlari  ekledim
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(1500px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+///////////////////
+.carousel-caption span {
+  font-family: "Indie Flower", cursive;
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  padding: 50px;
+  animation: slideInFromBottom 1.5s ease-out forwards;
+}
+
+.carousel-caption h3 {
+  font-size: 40px;
+  line-height: 25px;
+  color: #41464b;
+  padding: 2.5rem 16px;
+  animation: slideInFromBottom 1.5s ease-out forwards;
+}
+.carousel-item img {
+  height: 800px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousel-caption .btn-primary {
+  width: 200px; /* Adjust as needed */
+  height: 50px; /* Adjust as needed */
+
+  /* Adjust padding for better visual balance (optional) */
+  padding: 10px 20px; /* Adjust as needed */
+
+  font-size: 25px; /* Adjust as needed */
+  line-height: 1;
+  animation: slideInFromBottom 1.5s ease-out forwards;
+}
+//////////////////////////////////////////////////
+
+.category .box-container {
+  @include grid(16rem);
+  padding: 4rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rem;
+  margin-left: 310px;
+
+  .box {
+    text-align: center;
+    position: relative;
+    padding-left: 30px;
+
+    &:hover img {
+      transform: scale(1.2);
+    }
+
+    img {
+      height: 15rem;
+      transition: transform 0.3s ease;
+    }
+
+    h3 {
+      font-size: 2rem;
+      margin: 1rem 0;
+      color: $light-color;
+    }
+
+    &:hover {
+      color: #e72463;
+    }
+  }
+}
+
+.products .box-container {
+  @include grid(25rem);
+  display: flex;
+  flex-wrap: wrap; /* Kutu sayısı fazla olduğunda alt satıra geçmesini sağlar */
+  gap: 1rem; /* Kutular arasındaki boşluğu ayarlar */
+  justify-content: center; /* Kutuları yatayda ortalar */
+
+  .box {
+    top: 20px;
+    position: relative;
+    background: $light-bg;
+    text-align: center;
+    overflow: hidden;
+    width: 520px; /* Kutunun genişliğini belirler */
+    /* Kutunun yüksekliğini belirler */
+    margin: 1rem; /* Kutular arasındaki boşluk */
+
+    transition: all 0.5s ease; ///Sayfa ögeleri arasında yumuşak geçişler sağlayabil.
+    &:hover .icons {
+      top: 0;
+    }
+    .icons {
+      position: absolute;
+      top: -105%;
+      left: 0;
+      height: 65rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(243, 243, 243, 0.8);
+      gap: 1rem;
+
+      a {
+        font-size: 2rem;
+        height: 5rem;
+        width: 5rem;
+        line-height: 5rem;
+        background: white;
+        box-shadow: $box-shadow;
+        color: $light-color;
+
+        &:hover {
+          background: #e72463;
+          color: white;
+        }
+      }
+    }
+
+    image {
+      height: 350px;
+      width: 100%;
+      overflow: hidden;
+
+      img {
+        // height: 100%;
+        // width: 100%;
+        // object-fit: cover;
+        width: auto; /* Görüntünün genişliği otomatik */
+        height: 100%; /* Görüntünün yüksekliği kutu yüksekliği ile aynı */
+        margin: 20px;
+        object-fit: contain;
+      }
+    }
+
+    .content {
+      padding: 1.5rem;
+
+      h3 {
+        font-size: 2rem;
+        color: #000000;
+      }
+      .price {
+        font-size: 2rem;
+        color: $black;
+        padding: 1rem 0;
+      }
+
+      .stars i {
+        font-size: 1.7rem;
+        color: #e72463;
+      }
+    }
+  }
+  .box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.about {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 20px;
+  padding-left: 100px;
+
+  video {
+    width: 100%;
+    max-width: 800px; /* Maksimum genişlik ayarı */
+    height: auto;
+  }
+
+  .content {
+    flex: 1 1 40rem;
+    padding: 80px;
+    gap: 4rem;
+
+    .btn1 {
+      font-size: 18px;
+      top: 20px;
+      color: #000000;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: inline-block;
+      text-align: center;
+      width: 270px;
+      font-weight: bold;
+      padding: 14px 0px;
+      // border: 3px solid $primary;
+      border-radius: 2px;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+      &:before {
+        -webkit-transition: 0.5s all ease;
+        transition: 0.5s all ease;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: 50%;
+        bottom: 0;
+        opacity: 0;
+        content: "";
+        background-color: #e72463;
+        z-index: -2;
+      }
+      &:hover {
+        &:before {
+          -webkit-transition: 0.5s all ease;
+          transition: 0.5s all ease;
+          left: 0;
+          right: 0;
+          opacity: 1;
+        }
+      }
+      &:focus {
+        &:before {
+          transition: 0.5s all ease;
+          left: 0;
+          right: 0;
+          opacity: 1;
+        }
+      }
+    }
+
+    span {
+      color: #e72463;
+      font-size: 2.4rem;
+      padding-top: 10rem;
+    }
+    h3 {
+      color: #000000;
+      font-size: 5rem;
+      padding-top: 0.5rem;
+    }
+    p {
+      color: $light-color;
+      font-size: 2rem;
+      line-height: 2;
+      padding: 2rem 1rem;
+    }
+  }
+  img {
+    max-width: 800px; /* Resmi kapsayıcının genişliğine uyacak şekilde sınırla */
+    height: auto;
+    margin-top: 9rem;
+    padding-bottom: 60px;
+  }
+
+  .content2 {
+    flex: 1 1 40rem;
+    padding: 80px;
+    padding-top: 50px; /* Üstten boşluk ekler */
+    padding-bottom: 80px; /* Alttan boşluk ekler */
+    .btn1 {
+      font-size: 18px;
+      color: #000000;
+      top: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: inline-block;
+      text-align: center;
+      width: 270px;
+      font-weight: bold;
+      padding: 14px 0px;
+      // border: 3px solid $primary;
+      border-radius: 2px;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+      &:before {
+        -webkit-transition: 0.5s all ease;
+        transition: 0.5s all ease;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: 50%;
+        bottom: 0;
+        opacity: 0;
+        content: "";
+        background-color: #e72463;
+        z-index: -2;
+      }
+      &:hover {
+        &:before {
+          -webkit-transition: 0.5s all ease;
+          transition: 0.5s all ease;
+          left: 0;
+          right: 0;
+          opacity: 1;
+        }
+      }
+      &:focus {
+        &:before {
+          transition: 0.5s all ease;
+          left: 0;
+          right: 0;
+          opacity: 1;
+        }
+      }
+    }
+
+    h3 {
+      color: #000000;
+      font-size: 5rem;
+      padding-top: 0.5rem;
+    }
+    p {
+      color: $light-color;
+      font-size: 2rem;
+      line-height: 2;
+      padding: 2rem 1rem;
+    }
+  }
+}
+// @media (min-width: 768px) {
+//   .content {
+//     display: flex;
+//     flex-direction: column; /* İçeriği alt alta getirir */
+//     align-items: center;
+//   }
+
+.info-container {
+  @include grid(16rem);
+  padding: 4rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rem;
+  margin-left: 310px;
+
+  .box {
+    text-align: center;
+    position: relative;
+    padding-left: 30px;
+
+    &:hover img {
+      transform: scale(1.2);
+    }
+
+    img {
+      height: 15rem;
+      transition: transform 0.3s ease;
+    }
+
+    h3 {
+      font-size: 2rem;
+      margin: 1rem 0;
+      color: $light-color;
+    }
+
+    &:hover {
+      color: #e72463;
+    }
+  }
+}
+//////////// review page
+.info-container {
+  @include grid(27rem);
+  padding: 4rem 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 19rem;
+  // margin-left: 425px;
+  position: relative;
+  left: 120px;
+
+  .info {
+    text-align: center;
+    position: relative;
+    padding-left: 30px;
+    margin-right: 1rem;
+
+    &:hover img {
+      transform: scale(1.2);
+    }
+
+    img {
+      height: 9rem;
+      transition: transform 0.3s ease;
+    }
+
+    h3 {
+      // position: absolute;
+      // top: 7px;
+      // left: 150px;
+      font-size: 2.7rem;
+      margin: 1rem 12px;
+      color: #e72463;
+      padding-bottom: 0.5rem;
+    }
+    p {
+      font-size: 1.5rem;
+      color: #e72463;
+    }
+
+    &:hover {
+      color: #e72463;
+    }
+  }
+}
+
+.review {
+  @include grid(30rem);
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(3, 1fr); // 3 sütun oluşturur
+  gap: 1rem; // Kutular arasında boşluk bırakmak için
+
+  .box {
+    display: grid;
+    padding: 2rem;
+    position: relative;
+    border: 1px solid #a7a7a7; // İnce bir kenarlık ekler
+    border-radius: 0.5rem; // Köşeleri hafif yuvarlatır
+    flex: 1 1 30rem;
+    margin-bottom: 52px;
+    margin-left: 50px;
+    top: 20px;
+    gap: 1rem;
+    margin: 40px;
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      img {
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+      h3 {
+        font-size: 2.2rem;
+        color: $black;
+        padding-bottom: 0.3rem;
+      }
+      span {
+        font-size: 1.6rem;
+        color: #e72463;
+      }
+    }
+    p {
+      font-size: 1.4rem;
+      color: $light-color;
+      line-height: 2;
+    }
+  }
+}
+
+.blogs {
+  padding: 4rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  .box {
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: translateY(-10px);
+    }
+
+    .image {
+      width: 100%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 340px;
+        display: block;
+        border-bottom: 2px solid #e72463;
+      }
+    }
+
+    .content {
+      padding: 1.5rem;
+
+      .icons {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        a {
+          color: #666;
+          font-size: 1.6rem;
+          display: flex;
+          align-items: center;
+
+          i {
+            margin-right: 0.5rem;
+            color: #e72463;
+          }
+        }
+      }
+
+      h3 {
+        font-size: 1.8rem;
+        // margin-bottom: 0.5rem;
+        margin: 1rem 0;
+        color: #333;
+      }
+
+      p {
+        font-size: 1.7rem;
+        color: #777;
+        margin-bottom: 1.5rem;
+      }
+
+      a {
+        display: inline-block;
+        font-size: 1.4rem;
+        color: #e72463;
+        font-weight: bold;
+        text-decoration: none;
+        border-bottom: 1px solid #e72463;
+        padding-bottom: 0.5rem;
+        transition: 0.3s;
+      }
+    }
+  }
+}
+
+//////// Grid Layout kullanarak esnek ve duyarlı bir grid sistemi
+@mixin grid($max-width) {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax($max-width, 1fr)
+  ); /// belirli sayıda sütunu otomatik olarak sığdırır  sütunların minimum ve maksimum genişliklerini belirtir.
+  gap: 1rem;
+}
+
+.contact {
+  padding: 2rem;
+  .icons-container {
+    // @include grid(29rem);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .icons {
+      text-align: center;
+      border: 1px solid;
+      padding: 2rem;
+      margin: 30px 90px;
+      overflow: hidden; // Ekleyin
+
+      i {
+        height: 6rem;
+        width: 6rem;
+        line-height: 6rem;
+        font-size: 2.5rem;
+        background: #e72463;
+        color: #f3f3f3;
+        border-radius: 50%;
+      }
+      h3 {
+        color: #666;
+        font-size: 2.5rem;
+        line-height: 2;
+        padding: 7px;
+      }
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 2rem;
+
+    form {
+      padding: 2rem;
+      border: 1px solid #6e6b6b;
+      flex: 1 1 40rem;
+      margin: 2rem;
+      box-sizing: border-box; // Ekleyin
+
+      h3 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 2rem;
+      }
+
+      .inputbox {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        input {
+          width: 49%;
+        }
+      }
+
+      .inputbox .box,
+      textarea {
+        padding: 1rem 2rem;
+        font-size: 1.7rem;
+        border: 1px solid #6e6b6b;
+        color: #000000;
+        text-transform: none;
+        margin: 0.7rem 0;
+        box-sizing: border-box; // Ekleyin
+      }
+
+      textarea {
+        width: 100%;
+        height: 15rem;
+        resize: none; //////Yeniden boyutlandırmayı tamamen devre dışı bırakır
+      }
+    }
+    .map {
+      flex: 1 1 40rem;
+      width: 100%;
+      padding-bottom: 30px;
+      padding-right: 20px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0px;
+  }
+  .header .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header .icons {
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .contact .icons-container {
+    @include grid(40rem);
+  }
+  .contact .row {
+    flex-direction: column;
+  }
+  .contact .row form,
+  .contact .row .map {
+    margin: 1rem;
+  }
+  .banner-container {
+    display: flex;
+    flex-direction: column; /* Bannerleri dikey hizalar */
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  .banner-container .banner {
+    flex: 1 1 100%; /* Bannerlerin tam genişlikte olmasını sağlar */
+    height: 25rem; /* Bannerlerin yüksekliğini küçültür */
+    margin-bottom: 1.5rem; /* Bannerler arasında boşluk bırakır */
+  }
+
+  .banner-container .banner img {
+    height: 100%;
+    object-fit: cover; /* Resimlerin banner boyutlarına uymasını sağlar */
+    border-radius: 10px; /* Resimlerin köşelerini daha yuvarlak yapar */
+  }
+
+  .banner-container .banner .content {
+    padding: 1rem; /* İçeriğin kenar boşluklarını düzenler */
+    top: 45%; /* İçeriğin dikey ortalanmasını ayarlar */
+    left: 0.5rem; /* İçeriği sola hizalar */
+    right: 0.5rem; /* İçeriği sağa hizalar */
+    text-align: center; /* İçeriği ortalar */
+  }
+
+  .banner-container .banner .content h3 {
+    font-size: 2.5rem; /* Başlık boyutunu küçültür */
+    padding-left: 0;
+    padding-top: 20px;
+  }
+
+  .banner-container .banner .content span {
+    font-size: 1.2rem; /* Span font boyutunu küçültür */
+  }
+}
+/* styles.css */
+.scroll-to-top {
+  display: none; /* Varsayılan olarak gizli */
+  position: fixed; /* Sabit/çekirdek konum */
+  bottom: 20px; /* Sayfanın altında yerleştirin */
+  right: 30px; /* Sağdan 30px yerleştirin */
+  z-index: 99; /* Üst üste gelmemesini sağlayın */
+  background-color: #555; /* Arka plan rengi ayarla */
+  color: white; /* Metin rengi */
+  cursor: pointer; /* Hover'da mouse imlecini değiştir */
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  font-size: 18px; /* Yazı tipi boyutunu arttır */
+  text-align: center; /* İkonu ortala */
+}
+
+.scroll-to-top:hover {
+  background-color: #e72463; /* Hover'da koyu gri arka plan rengi ekleyin */
+}
+.scroll-to-top i {
+  color: white; /* İkon rengi beyaz */
+  font-size: 24px; /* İkon boyutunu ayarla */
+  line-height: 2; /* İkonun yukarı kaymasını önler */
+  vertical-align: middle; /* İkonu ortalar */
+}
